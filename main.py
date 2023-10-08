@@ -46,6 +46,7 @@ async def lifespan(app: FastAPI):
     yield
     await exchange.close()
     await telegram_bot.send_message(chat_id=CHATID, text='crypto-api Closed!')
+    await telegram_bot.close()
     
 #Flask app
 app = FastAPI(lifespan=lifespan)
