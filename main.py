@@ -95,7 +95,7 @@ async def trade(signal:TradeSignal):
     balance = await exchange.fetch_balance()
     market = "/".join(signal.trading_pair.split(USDT)) + USDT
     try:
-        match signal.position:
+        match signal.position.upper():
             case "BUY":
                 balance = balance[USDT]["free"]
                 if MIN_BALANCE > balance:
